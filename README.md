@@ -68,3 +68,4 @@ mask = (image_array[:, :, 0] > threshold_value).astype(np.uint8)  # Binary mask 
 ```python
 mask = np.expand_dims(mask, axis=-1)  # Single channel for compatibility with the model
 ```
+This code snippet loads an image, normalizes it, and applies a threshold to create a binary mask. The mask can then be used to train and evaluate the UNet model for binary segmentation.
