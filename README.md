@@ -34,6 +34,7 @@ The UNet architecture includes:
 You can install the required packages using:
 ```bash
 pip install tensorflow numpy pillow matplotlib
+```
 
 ## Dataset
 
@@ -49,15 +50,21 @@ To create the synthetic mask from an image, use the following code:
 ```python
 from PIL import Image
 import numpy as np
+```
 
 # Load and preprocess the image
+```python
 image = Image.open("path_to_your_image.jpg").resize((512, 512)).convert("RGB")
 image_array = np.array(image) / 255.0  # Normalize the image to [0, 1] range
+```
 
 # Generate a binary mask by thresholding the red channel
+```python
 threshold_value = 0.5  # Define threshold for mask generation
 mask = (image_array[:, :, 0] > threshold_value).astype(np.uint8)  # Binary mask based on red channel
+```
 
 # Reshape to a 3-channel or single-channel format as needed
+```python
 mask = np.expand_dims(mask, axis=-1)  # Single channel for compatibility with the model
-
+```
